@@ -14,7 +14,12 @@
 Резервирование в sql скрипт:  
 `$ pg_dump mydb > db.sql`  
 Резервирование в архив:  
-`$ pg_dump -Fc mydb > db.dump`  
+```
+$ dropdb mydb
+$ pg_dump -Fc mydb > db.dump
+``` 
+Дропнуть текущую БД и пересоздать её из дампа:   
+`$ pg_restore -C -d postgres db.dump`  
 2.1.* Возможно ли автоматизировать этот процесс? Если да, то как?  
 Можно, через баш скрипт + задание в crontab.  
 Script:  
